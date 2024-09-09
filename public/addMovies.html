@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movies page</title>
+    <link rel="stylesheet" href="css/addMovies.css"/>
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      
+.profile-pic-div{
+  height: 290px;
+    width: 200px;
+    overflow: hidden;
+position: relative;
+  border-radius: 2%;
+  border: 1px solid grey;
+  justify-content: center;
+}
+
+#photo{
+  height: 100%;
+  width: 100%;
+}
+
+#file{
+  display: none;
+}
+#uploadBtn{
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: wheat;
+  line-height: 30px;
+  font-family: sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  display: none;
+}
+.finalprofile{
+  display: flex;
+  justify-content: center;
+}
+    </style>
+  </head>
+  <body>
+     <div class="container">
+      <div class="form">
+        <div class="contact-info">
+          <form action="/" method="post" enctype="multipart/form-data" >
+        <div class="finalprofile">
+          <div class="profile-pic-div">
+           <img src="images/avatar.svg" id="photo" >
+           <input type="file" id="file" name="image">
+           <label for="file" id="uploadBtn">Set Movie image</label>
+           </div>
+         </div>
+        <div class="input-container input-container1 tagboxbox textarea">
+          <textarea name="tags" class="input"></textarea>
+          <label for="">Add Tags</label>
+          <span>Add Tags</span>
+        </div>
+    
+        <p class="tagBc">Note :- Add Tags with comma between them</p>
+        </div>
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span> 
+
+          <div class="AddedMovies">
+            <h3 class="title">Add Movies</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Title</label>
+              <span>Title</span>
+            </div>
+            <div class="input-container">
+              <input type="date" name="date" class="input" />
+              <label for=""></label>
+              <span></span>
+            </div>
+            <div class="input-container">
+              <input type="rating" name="rating" class="input" />
+              <label for="">Rating</label>
+              <span>Rating</span>
+            </div>
+            <div class="input-container">
+              <input type="link" name="Youtube_Link" class="input" />
+              <label for="">Youtube Link</label>
+              <span>Youtube Link</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="description" class="input"></textarea>
+              <label for="">Description</label>
+              <span>Description</span>
+            </div>
+            
+            <input type="submit" value="ADD" class="btn" />
+          </div>
+        </form>
+      </div>
+      </div>
+    </div> 
+
+    <script src="javascript/addMovies.js"></script>
+    <script src="javascript/mrslogin3.js"></script>
+  </body>
+  <script>
+    const ul = document.querySelector("ul"),
+input = document.querySelector("input"),
+tagNumb = document.querySelector(".details span");
+
+let maxTags = 10,
+tags = ["coding", "nepal"];
+
+countTags();
+createTag();
+
+function countTags(){
+    input.focus();
+    tagNumb.innerText = maxTags - tags.length;
+}
+
+function createTag(){
+    ul.querySelectorAll("li").forEach(li => li.remove());
+    tags.slice().reverse().forEach(tag =>{
+        let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
+        ul.insertAdjacentHTML("afterbegin", liTag);
+    });
+    countTags();
+}
+
+function remove(element, tag){
+    let index  = tags.indexOf(tag);
+    tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+    element.parentElement.remove();
+    countTags();
+}
+
+function addTag(e){
+    if(e.key == "Enter"){
+        let tag = e.target.value.replace(/\s+/g, ' ');
+        if(tag.length > 1 && !tags.includes(tag)){
+            if(tags.length < 10){
+                tag.split(',').forEach(tag => {
+                    tags.push(tag);
+                    createTag();
+                });
+            }
+        }
+        e.target.value = "";
+    }
+}
+
+input.addEventListener("keyup", addTag);
+
+const removeBtn = document.querySelector(".details button");
+removeBtn.addEventListener("click", () =>{
+    tags.length = 0;
+    ul.querySelectorAll("li").forEach(li => li.remove());
+    countTags();
+});
+
+  </script>
+</html> 

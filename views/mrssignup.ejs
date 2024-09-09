@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Binge sign-up Form</title>
+	<link rel="stylesheet" type="text/css" href="css/mrssignup.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+<style>
+    .alert {
+      padding: 20px;
+      width: 100%;
+      background-color: #f44336;
+      color: rgb(0, 0, 0);
+      opacity: 1;
+      transition: opacity 0.6s;
+      margin-bottom: 15px;
+      position: fixed;
+    }
+    
+    .alert.success {background-color: #04AA6D;}
+    .alert.info {background-color: #2196F3;}
+    .alert.warning {background-color: #ff9800;}
+    .alert.mine {background-color: #13f4e3;}
+    
+    
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
+<body>
+    <%- include ('./partials/messages.ejs') %>
+    <!--main-->
+	<img class="wave" src="images/wave grey.png">
+	<div class="container">
+        <div class="img">
+            <img src="images/bg.png">
+		</div>
+		<div class="login-content">
+			<div class="form">
+        <form action="/mrssignup" method="post" enctype="multipart/form-data">
+           <div class="finalprofile">
+             <div class="profile-pic-div">
+              <img src="images/avatar.svg" id="photo" >
+              <input type="file" id="file" name="image">>
+              <label for="file" id="uploadBtn">Set profile-pic</label>
+              </div>
+            </div>
+            <h2 class="title">Sign up</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Set Username</h5>
+           		   		<input type="name" class="input" id="UUsername" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+           		   </div>
+           		</div>
+				   <div class="input-div one">
+					<div class="i">
+							<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+							<h5>Set Login-id</h5>
+							<input type="email" class="input" id="LLogin" name="email" value="<%= typeof email != 'undefined' ? email : '' %>">
+					</div>
+				 </div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Set Password</h5>
+           		    	<input type="password" class="input" id="PPassword" name="password" value="<%= typeof password != 'undefined' ? password : '' %>">
+            	   </div>
+            	</div>
+                <div class="input-div pass">
+                    <div class="i"> 
+                         <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                         <h5>Confirm Password</h5>
+                         <input type="password" class="input" id="PPassword" name="password2" value="<%= typeof password2 != 'undefined' ? password2 : '' %>">
+                 </div>
+              </div>
+               
+            	<a href="/mrslogin">Login instead?</a>
+            	<input type="submit" class="btn Sign-up-btn" value="Sign-up" onclick="getAndUpdate()">
+			</form>
+            </div>
+        </div>
+		</div>
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+            
+            for (i = 0; i < close.length; i++) {
+              close[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 600);
+              }
+            }
+            </script>
+    <script type="text/javascript" src="javascript/mrslogin.js"></script>
+	<script src="javascript/mrssignup.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<div class="cart-overlay" id="maincart">
+    <div class="cart" id="car">
+        <div class="cart-content">
+          <!--Cart items-->
+          <% if (user) { %>
+          <div class="finalprofile">
+            <div class="profile-pic-div">
+           <img src="<%= user.image %>" id="photo">
+           </div>
+           <div class="usernameinindex">
+            <% if (user.role =="admin") { %>
+              <%= user.name %> (admin)
+              <% } %>
+              <% if (user.role =="user") { %>
+                <%= user.name %> 
+                <% } %>
+            </div>
+          </div>
+          <% } %>
+          <div class="cartoptions">
+           
+            <div class="cartoption">
+              <a href="/"><h5>&#x1F3E0; Home</h5></a>
+            </div>
+            <div class="cartoption"> <a class="sliderlinks" href="/show"> 
+              <h5> &#128269; Find Movies</h5>
+            </a></div>
+            <% if (user) { %>
+             
+              <% if (user.role =="admin") { %>
+                <div class="cartoption">
+                  <a class="sliderlinks" href="addMovies.html"> 
+                    <h5>&#x2795; Add Movies</h5>
+                  </a>
+                </div>
+                <% } %>
+                <div class="cartoption">
+                  <a href="/logout"><h5> &#x1F513;logout</h5></a>
+                </div>
+                <% } %>
+                <form action="/search" method="POST">
+                  <!-- <div class="finalsearch"> -->
+                    <div class="finalfinalsearch2">
+                  <input class="searchbox2" name="searchbutton" type="search" placeholder="Search Movies or tags.." aria-label="Search">
+                  <button class="search2" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+              </form>
+          </div>
+        </div>
+    </div>
+  </div>

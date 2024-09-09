@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navnav{
+    background-color: rgba(0, 0, 0, 0.2); /*<- background color with opacity*/
+    display: flex;
+    justify-content: space-between;
+    /* position:fixed; */
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}
+.barrs{
+    visibility: hidden;
+}
+.FinalNavbar1{
+    display: flex;
+    justify-content: left;
+}
+.FinalNavbar2{
+    display: flex;
+    justify-content: right;
+}
+.but1{
+    padding: 1vh;
+    margin: 0.2vh;
+    text-decoration: none;
+}
+.but1but1{
+    text-decoration: none;
+}
+.but2{
+    padding: 1vh;
+    margin: 0.2vh;
+}
+.but3{
+    padding: 1vh 2vh 1vh 1vh;
+    margin: 0.2vh;
+}
+
+.fa-bars{
+    display: none;
+    /* color: white; */
+}
+.fa-times{
+    padding: 3vh 3.29vh;
+    cursor: pointer;
+    color: rgb(155, 155, 155);
+}
+.logo{
+
+    padding: 0.25vh 2vh 1vh 2vh;
+}
+/*Search box starts*/
+.finalsearch{
+    /* background-color: black; */
+    border-radius: 100vh;
+    padding: 1.5vh 2vh 2vh 2vh;
+}
+.finalfinalsearch{
+    display: flex;
+    background-color: white;
+    border-radius: 1vh;
+}
+.finalfinalsearch2{
+    display: flex;
+    background-color: white;
+    border-radius: 1vh;
+    margin: 12px 0;
+}
+.searchbox{
+    padding: 10px;
+    height: 40px;
+    width: 200px;
+    border: 0;
+    border-radius: 0.5vh;
+}
+.search{
+    background: white;
+    height: 40px;
+    width: 40px;
+    padding : 0;
+    border: 0;
+    border-radius: 0.5vh;
+}
+.searchbox2{
+    padding: 10px;
+    height: 40px;
+    width: 84vw;
+    border: 0;
+    border-radius: 0.5vh;
+}
+.search2{
+    background: white;
+    height: 40px;
+    width: 40px;
+    padding : 0;
+    border: 0;
+    border-radius: 0.5vh;
+}
+.butbut3{
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .search{
+        background: white;
+        height: 40px;
+        width: 40px;
+        padding : 0;
+        border: 0;
+        border-radius: 0.5vh;
+    }
+    .searchbox{
+        height: 40px;
+        width: 10px;
+        border: 0;
+        border-radius: 0.5vh;
+    }
+    
+.but1{
+    visibility: hidden;
+}
+.but1but1{
+    visibility: hidden;
+}
+.but2{
+    visibility: hidden;
+}
+.butbut3{
+    display: flex;
+    float: right;
+    margin: 0 0 0 8.5vw;
+}
+.searchbox{
+    display: none;
+}
+/* 
+.bhut3{
+    visibility: hidden;
+} */
+.navnav{
+    background-color: rgba(0, 0, 0, 0.2); /*<- background color with opacity*/
+    /* position:fixed; */
+    /* overflow:scroll; */
+    top: 0;
+    width: 100vw;
+    z-index:100;
+}
+.FinalNavbar1{
+    float: left;
+}
+.FinalNavbar2{
+    float: left;
+}
+.login{
+    padding: 10px;
+    height: 50px;
+    color: white;
+    background-color: rgb(45, 43, 43);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+}
+.logo{
+    margin-right: calc(100vw - 12vw - 80px - 30px - 40px - 110px);
+    padding: 1vh 3vw 3vw 3vw;
+}
+.fa-bars{
+    padding: 3vh 3vw 3vw 3vw;
+    cursor: pointer;
+    /* color: white; */
+}
+.barrs{
+    visibility:visible;
+}
+}
+/*Search box ends*/

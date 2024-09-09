@@ -1,0 +1,22 @@
+<% if (typeof error != 'undefined') { %>
+ <% error.forEach(function(error){ %>
+    <div class="alert mine">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <p><%= error.msg %></p>
+      </div>
+<% })%>
+<% } %>
+
+<% if (typeof success_msg !== 'undefined' && success_msg !== '') { %>
+    <div class="alert mine">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <p><%= success_msg %></p>
+      </div>
+<% } %>
+
+<% if (typeof error_msg !== 'undefined' && error_msg !== '') { %>
+    <div class="alert mine">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <p><%= error_msg %></p>
+      </div>
+<% } %>

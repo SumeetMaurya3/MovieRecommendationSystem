@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* .navnav{
+    border: 2px solid #14FFEC
+} */
+.barrs{
+    color: white;
+}
+    
+     .findmoviemainbod {
+    display: flex;
+    justify-content:left;
+    background-color: #212121;
+}
+
+.moviedisplaybox {
+    display: inline-block;
+    border: 2px solid #14FFEC;
+    padding: 10px;
+    margin: 11vh 0rem 8vh 8vh;
+    width: 700px;
+    height: 650px;
+    overflow-y: scroll;
+  }
+  .moviedisplaybox::-webkit-scrollbar { 
+    display: none;  
+}
+  .tagsmainbox {
+    display: block;
+    border: 2px solid #14FFEC;
+    margin: 1vh;
+    width: 360px;
+    height: 600px;
+    position:fixed;
+    top: 10vh;
+    right: 7vh;
+  }
+
+  .tagboxtitle{
+    color: white;
+    width: 100%;
+    height: 80px;
+    border-bottom: 0.5px solid #4a4949;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+.actualtags{
+    padding: 13px 10px;
+}
+.tagbutton{
+    padding: 3px 6px 3px 6px;
+    font-size: 16px;
+    border-radius: 15px;
+    margin: 2px;
+    font-weight: bold;
+}
+
+.moviemainbox{
+    height: 300px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  border-bottom: 2px solid black;
+}
+.movieimage{
+    height: 290px;
+    width: 290px;
+    overflow: hidden;
+}
+.movieimage img{
+    height: 290px;
+}
+.moviedata{
+    margin: 5px 15px 5px 15px;
+    width: 100%;
+}
+.AddedMovies{
+    padding-top: 100px;
+}
+.topmoviedata{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.movietitle{
+    font-weight: bold;
+    margin: 5px 0px -10px 0px;
+    font-size: 30px;
+}
+.fa-clock{
+    margin-right: 2px;
+}
+.botonbut{
+    background-color: #d2f8ff;
+  }
+.tagsinmoviebox{
+    padding-left: 3px;
+}
+.descriptioninmoviebox{
+    height: 100px;
+    overflow-y: auto;
+    scrollbar-color: black;
+
+    margin: 10px 0px 10px 0px;
+}
+.descriptioninmoviebox::-webkit-scrollbar { 
+    display: none;  
+}
+.bottommoviedata{
+    display: flex;
+    justify-content: space-between;
+}
+.movierating{
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.changecolor{
+    background-color: #14FFEC;
+  }
+.submitfindmovie{
+    margin: 110px;
+    background-color: #ffc107;
+}
+.postinfind{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 1210px) { 
+.findmoviemainbod {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #212121;
+}
+
+.moviedisplaybox {
+    display: inline-block;
+    border: 0px solid #14FFEC;
+    padding: 14px;
+    margin: 11vh 1rem 8vh 1rem;
+    width: 700px;
+    height: 86vh;
+    overflow-y: scroll;
+  }
+  .moviedisplaybox::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+  .tagsmainbox {
+    border-bottom: 2px solid #14FFEC;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem ;
+    display: contents;
+
+  }
+.tagboxtitle{
+    color: white;
+    width: 94%;
+    height: auto;
+    border-bottom: 0.5px solid #4a4949;
+    display: flex;
+    justify-content: left;
+    margin-left: 1rem ;
+    font-size: 36px;
+}
+.actualtags{
+    padding: 13px 10px;
+}
+.tagbutton{
+    padding: 3px 6px 3px 6px;
+    font-size: 16px;
+    border-radius: 15px;
+    margin: 2px;
+    font-weight: bold;
+}
+
+/* Movie display box starts here*/
+.moviemainbox{
+  height: auto;
+  width: 100%;
+  background-color: white;
+  display: inline-block;
+  border-bottom: 2px solid black;
+}
+.movieimage{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.movieimage img{
+    width: 100%;
+    height: auto;
+}
+.moviedata{
+    padding: 0 2rem 0 0rem;
+    width: 100%;
+}
+.AddedMovies{
+    padding-top: 100px;
+}
+.topmoviedata{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.movietitle{
+    font-weight: bold;
+    margin: 5px 0px -10px 0px;
+    font-size: 30px;
+}
+.fa-clock{
+    margin-right: 2px;
+}
+.botonbut{
+    background-color: #d2f8ff;
+  }
+.tagsinmoviebox{
+    padding-left: 3px;
+}
+.descriptioninmoviebox{
+    height: 64px;
+    overflow-y: auto;
+    scrollbar-color: black;
+
+    margin: 10px 0px 10px 0px;
+}
+.descriptioninmoviebox::-webkit-scrollbar { 
+    display: none;  
+}
+.bottommoviedata{
+    display: flex;
+    justify-content: space-between;
+}
+.movierating{
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.changecolor{
+    background-color: #14FFEC;
+  }
+.submitfindmovie{
+    margin: 110px;
+    background-color: #ffc107;
+}
+.postinfind{
+    display: flex;
+    justify-content: center;
+}
+
+}

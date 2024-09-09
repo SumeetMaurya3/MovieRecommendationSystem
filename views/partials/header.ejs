@@ -1,0 +1,46 @@
+<header>
+    <nav class="navnav">
+        <div class="FinalNavbar1">
+        <i class="fa fa-bars barrs fa-lg" id="barrrs" aria-hidden="true"></i>
+          <a class="logo"><img src="images/logo white.png" alt="logo here" width="80px"></a>
+          <form action="/search" method="POST">
+            <div class="finalsearch">
+              <div class="finalfinalsearch">
+            <input class="searchbox" name="searchbutton" type="search" placeholder="Search Movies or tags.." aria-label="Search">
+            <button class="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+        </form>
+      </div>
+      <% if (user) { %>
+        <div class="but3 bhut3 butbut3"><div class="profile-pic-div">
+          <img src="<%= user.image %>" id="photo2" >
+          </div></div>
+    <% } %>
+    <% if(!(user)) { %>
+      <a href="/choose"><div class="but3 butbut3"><button type="button" class="btn btn-outline-success">Login</button></div></a>
+     <% }  %>
+          
+          <div class="but1"><button type="button" class="btn btn-info Homebut">Home</button></div>
+          <div class="but1"><button type="button" class="btn btn-warning findmov">Find Movies</button></div>
+          <% if (user) { %>
+
+              <a href="addMovies.html"><div class="but1"><button type="button" class="btn btn-dark addmov">Add Movies</button></div></a>
+  
+              <% } %>
+              
+        </div>
+        <div class="FinalNavbar2">
+            <!-- <div class="but2"><button type="button" class="btn btn-dark about">About us</button></div> -->
+            <% if (user) { %>
+                <a href="/logout"><div class="but3 bhut3"><button type="button" href="/logout" class="btn btn-outline-warning">Log out</button></div></a>
+                <div class="but3 bhut3"><div class="profile-pic-div">
+                  <img src="<%= user.image %>" id="photo2" >
+                  </div></div>
+            <% } %>
+            <% if(!(user)) { %>
+                <a href="/choose"><div class="but3 bhut3"><button type="button" href="/choose" class="btn btn-outline-success login">Login</button></div></a>
+             <% }  %>
+              
+        </div>
+      </nav>
+</header>

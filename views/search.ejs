@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Movies</title>
+    <link rel="stylesheet" href="css/mrsheader.css" />
+    <link rel="stylesheet" href="css/mrsslideshow.css" />
+    <link rel="stylesheet" href="css/mrshomemain.css" />
+    <link rel="stylesheet" href="css/mrsfindmovie.css">
+    <link rel="stylesheet" href="css/mrsheader.css">
+    <link rel="stylesheet" href="css/mrsslideshow.css">
+    <link rel="stylesheet" href="css/mrshomemain.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+<link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/styles.min.css?v=7.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    />
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/styles.min.css?v=7.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <style>
+    .Searchresultfor{
+        color: white;
+        margin: 11px 0 11px 0;
+    }
+    hr{
+        height: 1px;
+        background-color: rgb(255, 255, 255, 0.3);
+        border: none;
+    }
+    .something{
+      display: none;
+  }
+  .tagtag{
+      display: inline-block;
+  }
+  </style>
+  <body>
+    <!--Navigation bar starts-->
+  <%- include ('./partials/header.ejs') %>
+<%- include ('./partials/slider.ejs') %>
+  
+  <!--Main body starts here-->
+  <div class="findmoviemainbod">
+  <!--Movie display -->
+  <div class="moviedisplaybox">
+    <h2 class="Searchresultfor">Search result for :- <%= searchedtext %></h2>
+    <hr>
+    <% j = 0%>
+    <%moviesList.forEach(data => {%>
+      <% j = j+1%>
+      <% for (var i = j; i < j+1;  i++) { %>
+        <% if(true){ %>
+    <div class="moviemainmain">
+    <div class="moviemainbox">
+      <div class="movieimage">
+        <img src="<%= data.image%>" alt="">
+      </div>
+      <div class="moviedata">
+        <div class="topmoviedata">
+          <div class="dateuploaded">
+            <i class="fa fa-solid fa-sharp fa-clock"></i><%= data.date%>
+          </div>
+          <div class="numberswatched">
+            <i class="fa fa-solid fa-sharp fa-user"></i> 0 watched
+          </div>
+        </div>
+        <div class="movietitlewithrank">
+        <div class="movietitle">
+          <p><%= data.name %></p>
+        </div>
+        <div class="movierankfind movietitle">
+          #<%= i%>
+        </div>
+      </div>
+        <div class="tagsinmoviebox">
+          <b><p>Tags:-
+            <% for( let index = 0; index <data.tags.length; index++ ) { %>
+              <button class="tagbutton botonbut"><%= data.tags[index] %></button>
+            <% } %>
+          </p></b>
+        </div>
+        <div class="descriptioninmoviebox">
+          <p><%= data.description %></p>
+        </div>
+        <div class="bottommoviedata">
+          <div class="buttonsatlast">
+            <form action="/viewmovie" method="POST"><input type="text" name="movie_id" class="something" value="<%= data.name %>"><input type="text" name="tag_id" class="something" value="<%= data.tags[0] %>"><button class="btn btn-dark">view movie</button></form>
+          </div>
+        <div class="movierating">
+          <p><%= data.rating %>/10</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <% } %>
+    <% } %>
+    <%})%>
+  </div>
+
+  </div>
+  <!--Tags starts here-->
+  </div>
+    <script src="../index.js"></script>
+    <script src="javascript/slider.js"></script>
+    <script src="javascript/homepage.js"></script>
+    <script src="javascript/findmovie.js"></script>
+    <script src="javascript/slider.js"></script>
+<script src="javascript/homepage.js"></script>
+<script src="javascript/cart.js"></script>
+  </body>
+</html>
