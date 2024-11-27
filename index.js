@@ -15,7 +15,7 @@ require("./passport-config")(passport); // Passport configuration
 
 // Initialize the app and set the port
 const app = express();
-const port = process.env.PORT || 42069;
+const port = process.env.PORT || 8080;
 
 // Database connection function
 async function main() {

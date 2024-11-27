@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../utils/multerConfig'); // Multer config moved to utils
+const upload = require('../utils/multerConfig.js'); // Multer config moved to utils
+const isAdmin = require('../utils/isAdmin.js'); // Import the isAdmin middleware
 const {
   getHomePage,
   getAddMoviePage,
@@ -14,7 +15,7 @@ const {
 
 // Routes
 router.get('/', getHomePage);
-router.get('/addmovie', getAddMoviePage);
+router.get('/addmovie', isAdmin, getAddMoviePage); // middleware to check if user is admin
 router.post('/', upload.single('image'), addMovie);
 router.get('/show', getMovies);
 router.post('/viewmovie', viewMovie);

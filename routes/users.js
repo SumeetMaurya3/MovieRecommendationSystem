@@ -17,6 +17,6 @@ router.get('/adminlogin', getAdminLogin);
 router.get('/mrssignup', getMrsSignup);
 router.get('/logout', logout);
 router.post('/mrssignup', upload.single('image'), postMrsSignup);
-router.post('/mrslogin', postMrsLogin);
+router.post('/mrslogin', postMrsLogin); // JWT token is returned after login
 
 module.exports = router;

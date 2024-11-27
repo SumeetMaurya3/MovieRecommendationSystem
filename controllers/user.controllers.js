@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
-const userdetail = require('../models/users');
+const userdetail = require('../models/users.js');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
+const passport = require('passport');
+const jwt = require('jsonwebtoken'); // Import JWT library
 require('../passport-config'); // Ensure passport configuration is loaded
 
 // Cloudinary configuration
@@ -10,8 +12,6 @@ cloudinary.config({
     api_key: process.env.IMAGEAPIKEY || "",
     api_secret: process.env.IMAGEAPISECRET || ""
 });
-
-let filenama = "23"; // To store the uploaded filename
 
 // Controller for rendering MRS login page
 const getMrsLogin = (req, res) => {
@@ -40,7 +40,7 @@ const logout = (req, res, next) => {
 // Controller for handling MRS signup
 const postMrsSignup = async (req, res) => {
     try {
-        // Upload the image to Cloudinary
+        // Image upload logic to Cloudinary
         cloudinary.uploader.upload(`tmp/${filenama}`, async (err, result) => {
             const hashpassword = await bcrypt.hash(req.body.password, 10);
             const myData = new userdetail({
@@ -53,14 +53,16 @@ const postMrsSignup = async (req, res) => {
             let errors = [];
             const { name, email, password, password2 } = req.body;
 
-            // Check required fields
+            // Validate required fields
             if (!name || !email || !password || !password2) {
                 errors.push({ msg: 'Please fill all the fields' });
             }
+
             // Check passwords match
-            if (password != password2) {
+            if (password !== password2) {
                 errors.push({ msg: 'Passwords do not match' });
             }
+
             if (password.length < 6) {
                 errors.push({ msg: 'Password must be greater than 6 characters' });
             }
@@ -74,7 +76,7 @@ const postMrsSignup = async (req, res) => {
                     password2
                 });
             } else {
-                // Validation passed
+                // Check if email is already registered
                 userdetail.findOne({ email: email }).then(user => {
                     if (user) {
                         errors.push({ msg: 'Email is already registered' });
@@ -88,11 +90,11 @@ const postMrsSignup = async (req, res) => {
                     } else {
                         myData.save()
                             .then(() => {
-                                req.flash('success_msg', 'This is a success messgg');
-                                res.render("mrslogin", { error: errors });
+                                req.flash('success_msg', 'Signup successful!');
+                                res.render("mrslogin");
                             })
                             .catch(() => {
-                                res.status(400).send("Unfortunately user was not saved");
+                                res.status(400).send("Error saving user");
                             });
                     }
                 });
@@ -106,10 +108,26 @@ const postMrsSignup = async (req, res) => {
 
 // Controller for handling MRS login
 const postMrsLogin = (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/',
+    passport.authenticate('local', { 
         failureRedirect: '/mrslogin',
         failureFlash: true
+    }, (err, data, info) => {
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+        if (!data) {
+            return res.status(401).json({ message: info.message }); // Handle failed login
+        }
+
+        // If login is successful, return the user data and JWT token
+        const { user, token } = data;
+        res.status(200).json({
+            message: 'Login successful',
+            user: user,
+            token: token, // Send the JWT token to the client
+            
+        });
+        res.redirect('/');
     })(req, res, next);
 };
 
