@@ -5,10 +5,7 @@ const port = process.env.PORT || 42069;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const { kStringMaxLength } = require("buffer");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
-const initializepassport = require("./passport-config")
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
@@ -63,12 +60,6 @@ app.use(fileUpload({
   tempFileDir: path.join(__dirname, "./tmp"),
 }))
 
-// In older versions of express, we had to use:
-// app.use(express.bodyparser());
-// because body-parser was a middleware between node and express. Now we have to use it like:
-// app.use(bodyParser.urlencoded({ extended: false })); app.use(bodyParser.json()); since body parser has been depreciated.
-// These are used to parse the json object.
-
 // session 
 
 //global variables
@@ -88,5 +79,4 @@ async function main() {
   catch(err){
     console.log(err)
   }
-  // await mongoose.connect('mongodb+srv://SumeetMaurya:SumeetMaurya@cluster0.u9zel39.mongodb.net/?retryWrites=true&w=majority');
 }
