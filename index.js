@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 42069;
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser"); // This is of no use it is depricated
+const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const { kStringMaxLength } = require("buffer");
 const cors = require("cors");
@@ -62,8 +62,8 @@ app.use(fileUpload({
   useTempFiles:true,
   tempFileDir: path.join(__dirname, "./tmp"),
 }))
-// In older versions of express, we had to use:
 
+// In older versions of express, we had to use:
 // app.use(express.bodyparser());
 // because body-parser was a middleware between node and express. Now we have to use it like:
 // app.use(bodyParser.urlencoded({ extended: false })); app.use(bodyParser.json()); since body parser has been depreciated.

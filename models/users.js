@@ -4,19 +4,19 @@ const mongoose = require('mongoose')
 const signupdetail = new mongoose.Schema({
     name: {
       type: String, 
-      // required: true,
+      required: true,
     },
     email: {
       type: String, 
-      // required: true,
+      required: true,
     },
     image: {
       type: String,
-      // required: true,
+      required: true,
     },
        password: {
         type: String, 
-      //   // required: true,
+        required: true,
       },
       role: {
         type: String,

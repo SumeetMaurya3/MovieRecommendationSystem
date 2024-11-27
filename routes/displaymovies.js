@@ -9,6 +9,9 @@ const multer = require('multer')
 var filenama = "23"
 var imageurl = ''
 var arrayoftags = ["Action", "Adventure", "Biographical", "Comedy", "Crime", "Drama", "Family", "Horror", "Romance", "Satire", "Science Fiction", "Super Hero", "Thriller", "War"]
+
+require("dotenv/config");
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>{
         cb(null, 'tmp')
@@ -22,9 +25,9 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 // Configuration 
 cloudinary.config({
-  cloud_name: "dfupidk7h",
-  api_key: "249623316637434",
-  api_secret: "0pBwehWpWGETvVtDsVNdxorW51Y"
+  cloud_name: process.eventNames.CLOUDNAME || "",
+  api_key: process.env.IMAGEAPIKEY || "",
+  api_secret: process.env.IMAGEAPISECRET || ""
 });
 
 
